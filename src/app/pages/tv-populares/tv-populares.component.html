@@ -1,0 +1,19 @@
+<div class="container">
+
+    <div *ngIf="loading" class="loading">Cargando tvs populares...</div>
+  
+    <div *ngIf="!loading" class="tv-grid">
+      <div *ngFor="let tv of tvs" class="tv-card">
+        <img
+          [src]="'https://image.tmdb.org/t/p/w300' + tv.poster_path"
+          [alt]="tv.original_name"
+          class="tv-poster"
+        />
+        <h3>{{ tv.original_name }}</h3>
+        <p>Fecha de estreno: {{ tv.first_air_date }}</p>
+        <p>Puntuación: {{ tv.vote_average }}/10</p>
+      </div>
+    </div>
+    
+  </div>
+  

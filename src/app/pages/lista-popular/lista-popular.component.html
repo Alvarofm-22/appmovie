@@ -1,0 +1,21 @@
+<div class="container">
+  <div *ngIf="loading" class="loading">Cargando películas...</div>
+
+  <div *ngIf="!loading" class="movie-grid">
+    <div *ngFor="let movie of movies" class="movie-card">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path"
+        [alt]="movie.original_title"
+        class="movie-poster"
+      />
+      <h3>{{ movie.original_title }}</h3>
+      <p>Fecha de estreno: {{ movie.release_date }}</p>
+      <p>Puntuación: {{ movie.vote_average }}/10</p>
+    </div>
+  </div>
+
+  <div *ngIf="!loading">
+    <button (click)="loadMore()">Cargar más</button>
+  </div>
+  
+</div>
