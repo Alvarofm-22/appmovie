@@ -1,104 +1,54 @@
-/* Cargando */
-.loading {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #333; /* Color oscuro para texto */
-  margin-top: 20px;
-}
 
-/* Estilos del grid de películas */
-.movie-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem;
-  max-height: 80vh;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
-
-/* Estilos de las tarjetas de película */
-.movie-card {
-  background-color: #fff; /* Fondo blanco para las tarjetas */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-bottom: 1rem;
-  opacity: 0;
-  transform: translateY(20px); /* Inicia con un pequeño desplazamiento hacia abajo */
-}
-
-/* Mostrar las tarjetas con animación */
-.movie-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Efecto hover tecnológico con sombras */
-.movie-card:hover {
-  transform: translateY(-5px); /* Desplazamiento hacia arriba */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Sombra con color azul tecnológico */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-  filter: brightness(1.1) contrast(1.2); /* Efecto brillante y contraste */
-}
-
-/* Imagen del póster */
-.movie-poster {
-  width: 80%;
-  height: auto;
-  object-fit: cover;
-  border-bottom: 1px solid #ddd;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-/* Hover en la imagen para un pequeño zoom */
-.movie-card:hover .movie-poster {
-  transform: scale(1.05);
-}
-
-/* Títulos de las películas */
-.movie-card h3 {
-  font-size: 1.1rem;
-  margin: 1rem 0 0.5rem;
-  color: #333; /* Color oscuro */
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
-}
-
-/* Descripción de la película */
-.movie-card p {
-  margin: 0.2rem 0;
-  font-size: 0.9rem;
-  color: #555; /* Color gris oscuro para el texto */
-  transition: color 0.3s ease;
-}
-
-/* Estilos del botón de cargar más */
-button {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin: 20px auto;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Hover en el botón */
-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px); /* Desplazamiento hacia arriba */
-  box-shadow: 0 6px
-}
+  
+  .loading {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #000000; /* Celeste tecnológico */
+  }
+  
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .movie-card {
+    background-color: #f5f5f5; /* Tarjetas claras */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  
+  .movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(48, 69, 71, 0.3); /* Hover con luz cian */
+  }
+  
+  .movie-poster {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .movie-card h3 {
+    font-size: 1rem;
+    margin: 0.8rem 0 0.3rem;
+    color: #000000; /* Celeste brillante */
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .movie-card p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  

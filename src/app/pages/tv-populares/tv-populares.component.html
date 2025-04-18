@@ -14,6 +14,10 @@
         <p>Puntuación: {{ tv.vote_average }}/10</p>
       </div>
     </div>
+
+    <div *ngIf="!loading">
+      <button (click)="cargarMas()">Cargar más</button>
+    </div>
     
   </div>
   

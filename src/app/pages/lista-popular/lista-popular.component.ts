@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { Movie } from '../../models/movie.model';
 import { CommonModule } from '@angular/common';
@@ -21,22 +21,6 @@ export class ListaPopularComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMovies();
-  }
-
-  cargarMovies(): void{
-      this.apiService.getListMovies().subscribe({
-        next: (data) =>{
-          console.log('Tv Populares cargadas: ', data);
-
-          const newMovies = this.page === 1 ? data.results : [...this.movies, ...data.results];
-          this.movies = newMovies;
-          this.loading = false;
-        },
-        error: (err) =>{
-          console.error('Error al cargar peliculas: ', err);
-          this.loading = false;
-        }
-      });
   }
 
   loadMovies(): void {

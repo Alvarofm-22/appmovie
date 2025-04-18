@@ -2,8 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MovieResponse } from '../../models/movie.model';
-import { environmentApi } from '../../constants/api.constants';
 import { TvCatalogResponse } from '../../models/tv.populares.model';
+import { environmentApi } from '../../constants/environment';
 
 
 @Injectable({
