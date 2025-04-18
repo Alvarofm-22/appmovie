@@ -1,0 +1,38 @@
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .movie-detail {
+    display: flex;
+    gap: 20px;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .image-wrapper {
+    flex-shrink: 0;
+  }
+  
+  .movie-poster {
+    width: 300px;
+    border-radius: 8px;
+  }
+  
+  .movie-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 50px;
+  }
+  

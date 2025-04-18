@@ -1,0 +1,30 @@
+<div class="container">
+    <div *ngIf="loading" class="loading">Cargando detalles de la película...</div>
+  
+    <div *ngIf="!loading && movie" class="movie-detail">
+      <div class="image-wrapper">
+        <img
+          [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path"
+          [alt]="movie.original_title"
+          class="movie-poster loaded"
+        />
+      </div>
+  
+      <div class="movie-info">
+        <h2>{{ movie.title }}</h2>
+        <p><strong>Título original:</strong> {{ movie.original_title }}</p>
+        <p><strong>Descripción:</strong> {{ movie.overview || 'No disponible.' }}</p>
+        <p><strong>Fecha de estreno:</strong> {{ movie.release_date }}</p>
+        <p><strong>Puntuación:</strong> {{ movie.vote_average }}/10 ({{ movie.vote_count }} votos)</p>
+        <p><strong>Popularidad:</strong> {{ movie.popularity }}</p>
+        <p><strong>Idioma original:</strong> {{ movie.original_language | uppercase }}</p>
+        <p><strong>Duración:</strong> {{ movie.runtime }} minutos</p>
+        <p><strong>Presupuesto:</strong> {{ movie.budget | currency:'USD' }}</p>
+        <p><strong>Recaudación:</strong> {{ movie.revenue | currency:'USD' }}</p>
+        <p><strong>Estado:</strong> {{ movie.status }}</p>
+        <p><strong>Tagline:</strong> <em>{{ movie.tagline }}</em></p>
+
+      </div>
+    </div>
+  </div>
+  

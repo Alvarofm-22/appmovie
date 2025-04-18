@@ -4,6 +4,8 @@ import { Movie } from '../../models/movie.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiBuscarServiceService } from '../../services/api/api.buscar.service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-popular',
@@ -17,8 +19,14 @@ export class ListaPopularComponent implements OnInit {
   loading: boolean = true;
   page: number = 1;
 
-  constructor(private apiService: ApiService, private el: ElementRef) {}
-
+  constructor(
+    private apiService: ApiService,
+    private apiBusqueda: ApiBuscarServiceService,
+    private el: ElementRef,
+    private router: Router
+  ) {}
+  
+  
   ngOnInit(): void {
     this.loadMovies();
   }
@@ -35,7 +43,7 @@ export class ListaPopularComponent implements OnInit {
           movieCards.forEach((card: HTMLElement) => {
             card.classList.add('show');
           });
-        }, 100); 
+        }, 100);
         this.loading = false;
       },
       error: (err) => {
@@ -51,4 +59,28 @@ export class ListaPopularComponent implements OnInit {
     this.loading = false;
   }
 
+  onImageLoad(movie: Movie): void {
+    movie.imageLoaded = true;
+  }
+
+  onImageError(movie: Movie): void {
+    movie.retryCount = (movie.retryCount || 0) + 1;
+
+    if (movie.retryCount <= 3) {
+      setTimeout(() => {
+        // Fuerza recarga de la imagen
+        const timestamp = new Date().getTime();
+        movie.poster_path = movie.poster_path.split('?')[0] + '?retry=' + movie.retryCount + '&t=' + timestamp;
+      }, 1000);
+    } else {
+      movie.imageLoaded = true;
+      movie.poster_path = '/assets/image-not-found.png'; // Asegúrate de tener esta imagen en assets
+    }
+  }
+
+  getMovieDetails(movieId: number): void {
+    this.router.navigate(['/detalle', movieId]);
+  }
+
 }
+

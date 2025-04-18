@@ -13,6 +13,8 @@ export interface Tv {
     vote_average: number;           // Promedio de votos
     vote_count: number;             // Cantidad de votos
     adult: boolean;                 // Si es contenido para adultos
+    imageLoaded?: boolean;
+    retryCount?: number;
 }
 
 export interface TvCatalogResponse {
