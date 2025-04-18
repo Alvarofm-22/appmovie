@@ -52,4 +52,23 @@ export class TvPopularesComponent implements OnInit{
     this.loading = false;
   }
 
+  onImageLoad(tv: Tv): void{
+    tv.imageLoaded = true;
+  }
+
+  onImageError(tv: Tv): void{
+    tv.retryCount = (tv.retryCount || 0) + 1;
+
+    if(tv.retryCount <= 3){
+      setTimeout(() => {
+        const timestamp = new Date().getTime();
+        tv.poster_path = tv.poster_path.split('?') [0] + '?retry=' + tv.retryCount + '&t=' + timestamp;
+      },1000);
+    } else{
+      tv.imageLoaded = true;
+      tv.poster_path = '/assets/image-not-found.png'; // Asegúrate de tener esta imagen en assets
+    }
+
+  }
+
 }

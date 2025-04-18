@@ -2,12 +2,20 @@
   <div *ngIf="loading" class="loading">Cargando películas...</div>
 
   <div *ngIf="!loading" class="movie-grid">
-    <div *ngFor="let movie of movies" class="movie-card">
-      <img
-        [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path"
-        [alt]="movie.original_title"
-        class="movie-poster"
-      />
+    <div *ngFor="let movie of movies" class="movie-card" (click)="getMovieDetails(movie.id)">
+      <div class="image-wrapper">
+        <img
+          [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path"
+          [alt]="movie.original_title"
+          class="movie-poster"
+          (load)="onImageLoad(movie)"
+          (error)="onImageError(movie)"
+          [class.loaded]="movie.imageLoaded"
+        />
+        <div class="image-loader" *ngIf="!movie.imageLoaded">
+          <span class="loader"></span>
+        </div>
+      </div>
       <h3>{{ movie.original_title }}</h3>
       <p>Fecha de estreno: {{ movie.release_date }}</p>
       <p>Puntuación: {{ movie.vote_average }}/10</p>
@@ -17,5 +25,4 @@
   <div *ngIf="!loading">
     <button (click)="loadMore()">Cargar más</button>
   </div>
-  
 </div>

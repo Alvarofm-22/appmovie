@@ -4,11 +4,20 @@
   
     <div *ngIf="!loading" class="tv-grid">
       <div *ngFor="let tv of tvs" class="tv-card">
+        <div class="image-wrapper">
         <img
-          [src]="'https://image.tmdb.org/t/p/w300' + tv.poster_path"
-          [alt]="tv.original_name"
-          class="tv-poster"
+        [src]="'https://image.tmdb.org/t/p/w300' + tv.poster_path"
+        [alt]="tv.original_name"
+        class="tv-poster"
+        (load)="onImageLoad(tv)"
+        (error)="onImageError(tv)"
+        [class.loaded]="tv.imageLoaded"
         />
+        <div class="image-loader" *ngIf="!tv.imageLoaded">
+          <span class="loader"></span>
+        </div>
+
+      </div>
         <h3>{{ tv.original_name }}</h3>
         <p>Fecha de estreno: {{ tv.first_air_date }}</p>
         <p>Puntuación: {{ tv.vote_average }}/10</p>
